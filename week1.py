@@ -57,4 +57,49 @@ my_list[3] = 60000
 my_tuple = tuple(my_list)
 print("Updated Tuple= ", my_tuple)
 
+student = {
+    "name": "Dinesh",
+    "age": 33,
+    "course": "Python",
+    "marks": 88,
+    "is_passed": True
+}
 
+print(student.get("name"))
+print(student.get("course"))
+
+student["marks"] = 95
+student["grade"] = "A"
+
+print(student)
+
+student.pop("is_passed")
+print(student)
+
+for key, value in student.items():
+    print(f"Key: {key}, Value: {value}")
+
+for key in student:
+    print(f"Key only: {key}")
+
+for value in student.values():
+    print(f"Value Only: {value}")
+
+
+my_skills = {"Python", "Node.js", "React", "Python", "Java"}
+
+print(my_skills)
+
+# my_skills.append("FastAPI")
+my_skills.add("FastAPI")
+
+my_skills.remove("Java")
+print(my_skills)
+my_skills.discard("Ruby")
+print(my_skills)
+
+team_skills = {"Node.js", "React", "Docker", "Python"}
+
+print(my_skills | team_skills)
+print(my_skills & team_skills)
+print(my_skills - team_skills)
