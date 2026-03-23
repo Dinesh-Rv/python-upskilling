@@ -103,3 +103,54 @@ team_skills = {"Node.js", "React", "Docker", "Python"}
 print(my_skills | team_skills)
 print(my_skills & team_skills)
 print(my_skills - team_skills)
+
+
+# --- Day 3 ---
+# import Optional from typing
+from typing import Optional
+
+
+a= 15
+b= 4
+
+print("below are arithmetic operators")
+# print(a+b);
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+print(a//b)
+print(a**b)
+print(a%b)
+
+skills: list[str]= ["Java", "Python", "node", "react"]
+
+if "Python" in skills:
+    print("Python is in Skills")
+
+if "Ruby" not in skills:
+    print("Ruby Not in skills")
+
+# def find_employee(id: int) => name: Optional:
+def find_employee(id: int) -> Optional[str]:
+    if id == 1:
+        return "Pablo"
+    # return null
+    return None
+
+data = ["Python", "Node.js", "React", "FastAPI"]
+
+# def data_validate(length := len(data) > 3) :
+if (length := len(data)) > 3 :
+    print(f"The list is larger {length}")
+
+a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+print(a == b)
+print(a is b)
+print(a is c)
+
+print(find_employee(1))
+print(find_employee(99))
+
