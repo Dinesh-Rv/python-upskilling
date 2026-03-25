@@ -154,3 +154,79 @@ print(a is c)
 print(find_employee(1))
 print(find_employee(99))
 
+
+# --- Day 4 ---
+
+students = [
+    {"name": "Dinesh", "marks": 85},
+    {"name": "Kumar", "marks": 45},
+    {"name": "Raj", "marks": 92},
+    {"name": "Priya", "marks": 38},
+    {"name": "Sneha", "marks": 78}
+]
+
+print("=== Student Result ===")
+
+for index, student in enumerate(students, start=1):
+    name = student.get("name")
+    marks = student.get("marks")
+
+    if marks < 50:
+        print(f"{index}. {name} - FAIL ({marks}) X")
+        continue
+
+    if marks >= 90:
+        grade = "A"
+    elif marks >= 80:
+        grade = "B"
+    elif marks >= 70:
+        grade = "C"
+    else:
+        grade = "D"
+
+    print(f"{index}. {name} - Pass | Grade {grade} | Marks {marks}")
+
+score = 90
+
+def calculate_grade(score):
+    if score >= 90:
+        grade = "A"
+    elif score >= 80:
+        grade = "B"
+    elif score >= 70:
+        grade = "C"
+    elif score >= 60:
+        grade = "D"
+    else:
+        grade = "F"
+        
+    print(f"The Score is: {score} and Grade is {grade}")
+
+calculate_grade(score)
+
+i = 1
+while i <= 10:
+    if i == 7:
+        # break;
+        break
+    
+    print(f"Numbers: {i}")
+    # i++
+    i += 1
+
+numbers = [1,2,3,4,5,6,7,8,9,10]
+
+for num in numbers:
+    if num % 2 != 0:
+        continue
+    print(f"Even Numbers {num}")
+
+skills = ["Node.js", "Python", "React", "Java"]
+
+for index, skill in enumerate(skills, start=1):
+    print(f"Skill {index} - {skill}")
+
+students = ["Dinesh", "Kumar", "Raj"]
+
+for index, student in enumerate(students):
+    print(f"Index: {index} and Student: {student}")
