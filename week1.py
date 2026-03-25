@@ -230,3 +230,95 @@ students = ["Dinesh", "Kumar", "Raj"]
 
 for index, student in enumerate(students):
     print(f"Index: {index} and Student: {student}")
+
+# --- Day 5 ---
+
+from typing import Optional
+
+def calculate_bonus(
+    name: str,
+    salary: float,
+    performance: str = "average"
+) -> Optional[float]:
+    bonus_rates = {
+        "excellent": 0.20,
+        "good": 0.15,
+        "average": 0.10,
+        "poor": None 
+    }
+
+    rate = bonus_rates.get(performance)
+
+    if rate is None:
+        print(f"{name} is not eligible for bonus")
+        return None
+    
+    bonus = salary * rate
+    return bonus
+
+print(calculate_bonus("Dinesh", 40000))
+print(calculate_bonus("Kumar", 50000, "excellent"))
+print(calculate_bonus(name="Raj", salary=60000, performance="good"))
+
+def calculate_tax (
+    salary: float,
+    rate: float = 0.1,
+):
+    return salary * rate
+
+print(calculate_tax(50000))           
+print(calculate_tax(50000, 0.2))     
+
+def student_summary( name, *subjects, **details):
+    print(name)
+    for subject in subjects:
+        # print(subject);
+        print(subject)
+
+    for key, value in details.items():
+        print(f"{key} : {value}")
+
+student_summary(
+    "Dinesh",
+    "Python", "Node.js", "React",
+    age=24, city="Coimbatore"
+)
+
+def countdown(num):
+    # if num == 1:
+    #     return 1
+    
+    # return num, countdown(num - 1)
+    if num == 0:
+        return
+    print(num)
+    countdown(num-1)
+
+countdown(7)
+
+# square = lamda x: x ** 2
+square = lambda x: x**2
+print(square(5))
+
+numbers = [5, 2, 8, 1, 9, 3]
+
+# numbers_sorted = sorted(numbers, descending)
+numbers_sorted = sorted(numbers, reverse=True)
+print(numbers_sorted)
+
+app_name= "application"
+
+def modify_global():
+    app_name = "cation"
+
+def modify_global_valid():
+    global app_name
+    app_name = "appli"
+
+print(f"Before: {app_name}")
+
+modify_global()
+print(f"After modify_global: {app_name}")
+
+modify_global_valid()
+print(f"After modify_global_valid: {app_name}")
