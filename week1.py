@@ -322,3 +322,37 @@ print(f"After modify_global: {app_name}")
 
 modify_global_valid()
 print(f"After modify_global_valid: {app_name}")
+
+# --- Day 6 ---
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squares = [n ** 2 for n in numbers]
+
+# print(numbers)
+print(squares)
+
+employees = [
+    {"name": "Dinesh", "salary": 50000},
+    {"name": "Kumar",  "salary": 60000},
+    {"name": "Raj",    "salary": 45000},
+    {"name": "Priya",  "salary": 75000}
+]
+
+names_salary = [emp["name"] for emp in employees if emp["salary"] > 50000]
+
+print(names_salary)
+
+employee_dict = { emp["name"]: emp["salary"] for emp in employees }
+print(employee_dict)
+
+names = ["Dinesh", "David", "Kumar", "Kiran", "Raj"]
+unique_letter = {name[0] for name in names}
+print(unique_letter)
+
+square_gen = (i**2 for i in range(1,6))
+
+for num in square_gen:
+    print(f"First Loop: {num}")
+
+for num2 in square_gen:
+    print(f"Second loop: {num2}")
