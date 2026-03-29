@@ -356,3 +356,50 @@ for num in square_gen:
 
 for num2 in square_gen:
     print(f"Second loop: {num2}")
+
+# --- Day 7 ---
+
+from functools import reduce
+
+names = ["dinesh", "kumar", "raj", "priya"]
+uppercase_names = list(map(lambda x: x.upper(), names))
+print(uppercase_names)
+
+students = [
+    {"name": "Dinesh", "marks": 85},
+    {"name": "Kumar",  "marks": 42},
+    {"name": "Raj",    "marks": 91},
+    {"name": "Priya",  "marks": 38}
+]
+
+# passed_students = list(filter(lambda marks: marks >= 50, students))
+passed_students = list(filter(lambda student: student["marks"] >= 50, students))
+print(passed_students)
+
+names  = ["Dinesh", "Kumar", "Raj"]
+skills = ["Python", "Node.js", "React"]
+for name, skill in zip(names, skills):
+    print(f"{name} knows {skill}")
+
+salaries = [50000, 60000, 45000, 75000]
+total_salary= reduce(lambda x,y: x+y, salaries)
+# total_salary= salaries.reduce(lambda x,y: x+y)
+print(total_salary)
+
+employees = [
+    {"name": "Dinesh", "salary": 50000},
+    {"name": "Kumar",  "salary": 60000},
+    {"name": "Raj",    "salary": 45000},
+    {"name": "Priya",  "salary": 75000}
+]
+# highest_paid = max(employees.get("salary"))
+# lowest_paid = min(employees.get("salary"))
+# total_sal_bill = sum(employees.get("salary"))
+
+highest_paid = max(employees, key=lambda x: x["salary"])
+lowest_paid = min(employees, key=lambda x: x["salary"])
+total_sal_bill = sum(emp["salary"] for emp in employees)
+
+print(f"Highest Paid {highest_paid}")
+print(f"Lowest Paid {lowest_paid}")
+print(f"Total Sal Bill {total_sal_bill}")
