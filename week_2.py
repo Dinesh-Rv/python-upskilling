@@ -227,3 +227,164 @@ print(account.deposit(5000))
 print(account.withdraw(3000, "5432"))
 print(account.withdraw(1000, "9999"))   
 print(account.get_balance())
+
+# --- Day 10 ---
+
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+    def __str__(self):
+        return f"{self.__class__.__name__} | Area: {self.area():.2f}"
+
+    def __gt__(self, other):
+        return self.area() > other.area()
+
+    def __eq__ (self, other):
+        return self.area() == other.area()
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+        
+    def area(self):
+        return 3.14159 * self.radius ** 2
+
+    def perimeter(self):
+        return 2 * 3.14159 * self.radius
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+
+c = Circle(5)
+r = Rectangle(4, 6)
+
+print(c)
+print(r)
+print(c > r)
+print(c == r)
+
+shapes = [Circle(3), Rectangle(10, 2), Circle(7)]
+
+for shape in sorted(shapes):
+    print(shape)
+
+# Excercise
+
+from abc import ABC, abstractmethod
+
+class Employee(ABC):
+    def __init__(self, name):
+        self.name = name
+
+    @abstractmethod
+    def calculate_bonus(self):
+        pass
+
+    @abstractmethod
+    def get_role(self):
+        pass
+
+class FullTimeEmployee(Employee):
+    # bonus = 20
+    # role = "Full Time"
+
+    def __init__(self, name, salary):
+        super().__init__(name)
+        self.salary = salary
+
+    def calculate_bonus(self):
+        return self.salary * 0.20
+
+    def get_role(self):
+        return "Full Time"
+
+    def __str__(self):
+        bonus_rate = self.calculate_bonus()
+        return f"Name: {self.name} | Role: {self.get_role()} | Bonus: {bonus_rate}"
+
+    
+class ContractEmployee(Employee):
+    # bonus = 10
+    # role = "Contract"
+
+    def __init__(self, name, hourly_rate, hours):
+        super().__init__(name)
+        self.hourly_rate = hourly_rate
+        self.hours = hours
+
+    def get_role(self):
+        return "Contract"  
+
+    def calculate_bonus(self):
+        return (self.hourly_rate * self.hours) * 0.10
+
+    def __str__(self):
+        bonus_rate = self.calculate_bonus()
+        return f"Name: {self.name} | Role: {self.get_role()} | Bonus: {bonus_rate}"
+
+from functools import reduce
+class ShoppingCart():
+    def __init__(self):
+        self.cart = []
+
+    def add(self, item, price):
+        self.cart.append((item, price))
+
+    def __len__(self):
+        return len(self.cart)
+
+    def __str__(self):
+        # return f"All Items: item - {self.item} price - {self.price}"
+        items_wrap = "\n".join([f"{item}: Rs.{price}" for item, price in self.cart])
+        return f"Cart Items:\n{items_wrap}\n Total: Rs.{self.get_total()}"
+
+    def __add__(self, other):
+        new_cart = ShoppingCart()
+        # return cart + others
+        new_cart.cart = self.cart + other.cart
+        return new_cart
+
+    def get_total(self):
+        # return reduce(lambda x, y: x.price + y.price, self.cart)
+        return sum(price for item, price in self.cart)
+
+
+employees = [ FullTimeEmployee("Dinesh", 50000), ContractEmployee("Kumar", 5000, 8)]
+
+for emp in employees:
+    print(f"Calculated Bonus is: {emp.calculate_bonus()}")
+
+for emp in employees:
+    print(emp)
+
+cart1 = ShoppingCart()
+cart1.add("Laptop", 75000)
+cart1.add("Mouse", 1500)
+
+cart2 = ShoppingCart()
+cart2.add("Keyboard", 2500)
+cart2.add("Monitor", 15000)
+
+print(f"Cart 1 items: {len(cart1)}")
+print(cart1)
+
+combined = cart1 + cart2
+print(f"Combined items: {len(combined)}")
+print(combined)
