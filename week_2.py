@@ -388,3 +388,5 @@ print(cart1)
 combined = cart1 + cart2
 print(f"Combined items: {len(combined)}")
 print(combined)
+
+
