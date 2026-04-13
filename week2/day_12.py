@@ -41,3 +41,68 @@ def greet(name):
 print(greet("Dinesh"))
 print(greet.__name__)
 print(greet.__doc__)
+
+
+# --- Exercise ---
+# Decorators
+
+from functools import wraps
+# import datetime
+from datetime import datetime
+
+def validate_input(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        # even_numbers = filter( 
+        #     lambda number:
+        #         if number % 2 != 0:
+        #             print("Invalid input")
+        #             break
+        #         else:
+        #             return number           
+        # )    
+        for arg in args:
+            if isinstance(arg, (int, float)) and arg < 0:
+                print(f"Invalid Input! {arg} is not a positive Number!")
+                return None
+        return func(*args, **kwargs)
+    return wrapper
+
+def timer(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = datetime.now()
+        print(f"{func.__name__} started at {start_time}")
+        result = func(*args, **kwargs)
+        end_time = datetime.now()
+        print(f"{func.__name__} ended at {end_time}")
+        diff = end_time - start_time
+        print(f"Time took to run function {diff}")
+        return result
+    return wrapper
+
+def log_activity(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print(f"Function Name : {func.__name__}")
+        # print(f"Arguments Passed : {func.__args__}")
+        print(f"Arguments Passed : {args}")
+        result = func(*args, **kwargs)
+        print(f"Result is: {result}")
+        return result
+    return wrapper
+
+
+@validate_input
+@timer
+@log_activity
+def calculate_discount(price, discount_percentage):
+    discount_amount= price*discount_percentage/100
+    discount_price= price - discount_amount
+    return discount_price
+
+print("====Valid Input====")
+calculate_discount(1000, 10)
+
+print("\n====Invalid Input====")
+calculate_discount(-500, 10)
