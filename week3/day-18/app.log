@@ -1,0 +1,8 @@
+2026-04-22 17:57:10,247 - orders - ERROR - logging_test.py:37 -Error: Qty must ne positive
+Traceback (most recent call last):
+  File "C:\Users\dineshkumar.r\Repos\PythonUpskilling\python-upskilling\week3\day-18\logging_test.py", line 35, in <module>
+    shop.add_to_cart("Classic", -1)
+  File "C:\Users\dineshkumar.r\Repos\PythonUpskilling\python-upskilling\week3\day-18\burger_shop.py", line 24, in add_to_cart
+    raise ValueError("Qty must ne positive")
+ValueError: Qty must ne positive
+2026-04-22 17:57:10,247 - orders - INFO - logging_test.py:39 -Shop process failed
