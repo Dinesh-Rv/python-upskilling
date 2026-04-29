@@ -1,0 +1,24 @@
+
+====================================
+    EMPLOYEE SALARY REPORT
+====================================
+Total Employees  : 3
+Total Salary Bill: Rs.105,000.00
+Average Salary   : Rs.35,000.00
+
+Highest Paid:
+  Name       : Dinesh
+  Department : IT
+  Salary     : Rs.50,000.00
+
+Lowest Paid:
+  Name       : Riyas
+  Department : Trainee
+  Salary     : Rs.15,000.00
+
+====================================
+Employee Breakdown:
+====================================
+Dinesh          IT         Rs. 50,000.00
+Kumar           Admin      Rs. 40,000.00
+Riyas           Trainee    Rs. 15,000.00

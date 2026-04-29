@@ -1,0 +1,3 @@
+name,email,phone,salary,department,errors
+Ravi,ravi@email.com,5473849584,20000,HR,Invalid phone: 5473849584
+Karthick,karthick@email,6473847382,40000,Admin,Invalid email: karthick@email
